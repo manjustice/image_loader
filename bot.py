@@ -71,7 +71,16 @@ async def handle_photo(message: types.Message):
 
     await create_data(user_id, username, image_path)
 
-    await message.reply("I've saved your image")
+    await message.reply("I've saved your image.")
+
+
+@dp.message_handler(commands=["start"])
+async def handle_start(message: types.Message):
+
+    await bot.send_message(
+        chat_id=message.chat.id,
+        text="Hi! Send me your photo."
+    )
 
 
 async def main():
